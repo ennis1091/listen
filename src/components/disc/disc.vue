@@ -37,7 +37,11 @@
         }
         getSongList(this.disc.dissid).then((res) => {
           if (res.code === ERR_OK) {
+          	console.log("disc")
+          	console.log(res.cdlist[0].songlist)
             processSongsUrl(this._normalizeSongs(res.cdlist[0].songlist)).then((songs) => {
+            	console.log("getSongList")
+            	console.log(songs)
               this.songs = songs
             })
           }
@@ -50,6 +54,8 @@
             ret.push(createSong(musicData))
           }
         })
+        console.log("_normalizeSongs")
+        console.log(ret)
         return ret
       }
     },

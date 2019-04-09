@@ -74,6 +74,8 @@ export function processSongsUrl(songs) {
       })
     }
     let newsongs=songs.filter(item => item.url!="http://dl.stream.qqmusic.qq.com/") //新添加 过滤地址为空的purl
+    console.log("processSongsUrl")
+    console.log(newsongs)
     return newsongs    
   })
 }
