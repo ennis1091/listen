@@ -61,17 +61,21 @@ export function isValidMusic(musicData) {
 }  //获取有效歌曲
 
 export function processSongsUrl(songs) {
-
+  
   if (!songs.length) {
     return Promise.resolve(songs)
   }
   return getSongsUrl(songs).then((res) => {   
     if (res.code === ERR_OK) {
+      console.log("res")
+      console.log(res)
       let midUrlInfo = res.url_mid.data.midurlinfo     
       midUrlInfo.forEach((info, index) => {   //把url 拼接 赋值给 song实例
       	let song = songs[index]       
         song.url = `http://dl.stream.qqmusic.qq.com/${info.purl}`
       })
+      console.log("midUrlInfo")
+      console.log(midUrlInfo)
     }
     let newsongs=songs.filter(item => item.url!="http://dl.stream.qqmusic.qq.com/") //新添加 过滤地址为空的purl
     console.log("processSongsUrl")

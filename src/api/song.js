@@ -19,6 +19,9 @@ export function getSongsUrl(songs) {
 
   const urlMid = genUrlMid(mids, types)
 
+  console.log("urlMid")
+  console.log(urlMid)
+
   const data = Object.assign({}, commonParams, {
     g_tk: 5381,
     format: 'json',
@@ -42,6 +45,8 @@ export function getSongsUrl(songs) {
           if (urlMid && urlMid.code === ERR_OK) {
             const info = urlMid.data.midurlinfo[0]
             if (info) {
+              console.log("info")
+              console.log(res)
               resolve(res)
             } else {
               retry()
